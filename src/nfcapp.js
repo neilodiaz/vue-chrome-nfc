@@ -6,13 +6,9 @@ export default function (Vue){
         {
             deviceName: 'ACR122U USB NFC Reader',
             productId: 0x2200,
-            vendorId: 0x072f
-        },
-          {
-            deviceName: 'SCL3711 Contactless USB Smart Card Reader',
-            productId: 0x5591,
-            vendorId: 0x04e6
-          }
+            vendorId: 0x072f,
+            thumbnailURL: ''
+        }
     ]
 
     let device = null
@@ -25,9 +21,13 @@ export default function (Vue){
             chrome.nfc.read(device, {}, function (type, ndef) {
                 for (var i = 0; i < ndef.ndef.length; i++) {
                     tag_info = ndef.ndef[i]
+                    var info = tag_info.text.split(";")
+                    var points = info[0].split(":")
                     store.state.card_info = {
                         card_id: tag_info.tag_id,
-                        text: tag_info.text
+                        points: points[1],
+                        last_date_updated: info[1] + ' ' + info[2],
+                        store_id: info[3]
                     }
                 }
                 tag_detected = true;
@@ -74,12 +74,14 @@ export default function (Vue){
         },
 
         runTagChecker () {
-            tag_checker = setInterval(function () {
-                VueNFC.readNdefTag(function () {
-                    tag_detected = true;
-                    VueNFC.checkTagDetected();
-                });
-            }, 1000);
+            if ( !tag_detected ) {
+                tag_checker = setInterval(function () {
+                    VueNFC.readNdefTag(function () {
+                        tag_detected = true;
+                        VueNFC.checkTagDetected();
+                    });
+                }, 1000);
+            }
         },
 
         checkTagDetected() {

@@ -1,6 +1,6 @@
 # Vue Chrome-NFC
 
-A very simple Vue.js and Chrome Extension project. Used [Chrome NFC API](https://github.com/GoogleChrome/chrome-nfc)
+A very simple Vue.js and Chrome Extension project. Uses [Chrome NFC API](https://github.com/GoogleChrome/chrome-nfc) & [Vuex](https://github.com/vuejs/vuex/) library.
 
 Only runs on ACR122U & SCL3711 readers. You can try the sample app under the `final-chrome-app` directory. 
 

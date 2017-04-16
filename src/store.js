@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
         },
         card_info: {
             card_id: '',
-            text: ''
+            points: '',
+            last_date_updated: '',
+            store_id: ''
         }
     }
 })

@@ -11,21 +11,19 @@
         <p><strong>Card Info</strong></p>
         <ul>
             <li>Card ID: {{ cardinfo.card_id }}</li>
-            <li>Text: {{ cardinfo.text }}</li>
+            <li>Points: {{ cardinfo.points }}</li>
+            <li>Last Date Updated: {{ cardinfo.last_date_updated }}</li>
+            <li>Store ID: {{ cardinfo.store_id }}</li>
         </ul>
         <button type="button" @click.prevent="readCard">Read Card</button>
         <br>
         <br>
-        <p><strong>Write</strong></p>
+        <p><strong>Write Card</strong></p>
         <label for="data">Text:</label>
         <input type="text" v-model="data">
-        <button type="button" @click.prevent="writeCard">Write Card</button>
     </div>
 </template>
 <style>
-    body {
-        font-size: 18px;
-    }
     ul {
         margin: 0;
         padding: 0;
@@ -44,7 +42,7 @@
     export default {
         data() {
             return {
-                data: ''
+                points: 0
             }
         },
 
@@ -68,7 +66,9 @@
             },
 
             writeCard() {
-                this.$nfc.writeNdefTag('text', this.data)
+                // Format
+                // {userid};{points};{timestamp};{storeid}
+                this.$nfc.writeNdefTag('text', '')
             }
         }
     }
