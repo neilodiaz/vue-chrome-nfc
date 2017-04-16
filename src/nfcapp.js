@@ -6,9 +6,13 @@ export default function (Vue){
         {
             deviceName: 'ACR122U USB NFC Reader',
             productId: 0x2200,
-            vendorId: 0x072f,
-            thumbnailURL: ''
-        }
+            vendorId: 0x072f
+        },
+          {
+            deviceName: 'SCL3711 Contactless USB Smart Card Reader',
+            productId: 0x5591,
+            vendorId: 0x04e6
+          }
     ]
 
     let device = null

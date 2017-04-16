@@ -1,6 +1,11 @@
-# test-chrome-app
+# Vue Chrome-NFC
 
-> A Vue.js project
+A very simple Vue.js and Chrome Extension project. Used (Chrome-NFC Library)[https://github.com/GoogleChrome/chrome-nfc]
+
+Only runs on ACR122U & SCL3711 readers. You can try the sample app under the `final-chrome-app` directory. 
+
+<img src="https://raw.githubusercontent.com/neiljun-odiaz/vue-chrome-nfc/master/chrome-nfc-vue.jpg"/>
+
 
 ## Build Setup
 
